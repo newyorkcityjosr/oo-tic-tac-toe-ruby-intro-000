@@ -4,31 +4,21 @@ class TicTacToe
     @board = board || Array.new(9, " ")
   end
 
-  def play
-    @board = Array.new(9, " ")
-    # Play until someone wins or there is a draw
-    turn until over?
-    # Congratulate the winner
-    won? ? puts("Congratulations #{winner}!") : puts("Cat's Game!")
-    # Ask if they'd like to play again
-    puts "Would you like to play again? (Y or N)"
-    # If yes, then #play again
-    gets.strip.downcase == "y" || gets.strip.downcase == "yes" ? play : puts("Goodbye!")
+  def play	
+    turn until over?	
+    puts winner ? "Congratulations #{winner}!" : "Cat's Game!"	
   end
 
   # #turn gets the player's move, checks that the move is valid, then updates the board with the new move and finally displays the board.
   # Called by #play
   def turn
-    puts "Player #{current_player}, please enter a number 1-9:"
+    display_board
+    puts "Please enter 1-9:"
     input = gets.strip
-    index = input_to_index(input)
-    cp = current_player
-    if valid_move?(index)
-      move(index, cp)
-      display_board
-    else
+    if !valid_move?(input)
       turn
     end
+    move(input, current_player)
   end
 
   # #input_to_index converts the player's choice of position to the corresponding index in the board array.

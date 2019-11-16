@@ -41,8 +41,8 @@ class TicTacToe
 
   # #move updates the board array with the current player's valid move choice
   # Called by #turn
-  def move(index, token)	
-    @board[index] = token	
+  def move(index, token)
+    @board[index] = token
   end
 
   # #current_player checks which turn it is to determine if it's X or O's turn

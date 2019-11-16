@@ -4,9 +4,9 @@ class TicTacToe
     @board = board || Array.new(9, " ")
   end
 
-  def play	
-    turn until over?	
-    puts winner ? "Congratulations #{winner}!" : "Cat's Game!"	
+  def play
+    turn until over?
+    puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
   end
 
   # #turn gets the player's move, checks that the move is valid, then updates the board with the new move and finally displays the board.

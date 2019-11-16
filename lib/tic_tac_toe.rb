@@ -11,16 +11,19 @@ class TicTacToe
 
   # #turn gets the player's move, checks that the move is valid, then updates the board with the new move and finally displays the board.
   # Called by #play
-  def turn
-    display_board
-    puts "Please enter 1-9:"
-    input = gets.strip
-    if !valid_move?(input)
-      turn
-    end
-    move(input, current_player)
-  end
 
+  def turn	
+    puts "Please enter a number (1-9):"	
+    user_input = gets.strip	
+    index = input_to_index(user_input)	
+    if valid_move?(index)	
+      token = current_player	
+      move(index, token)	
+    else	
+      turn	
+    end	
+    display_board	
+  end
   # #input_to_index converts the player's choice of position to the corresponding index in the board array.
   # Called by #turn
   def input_to_index(input)
